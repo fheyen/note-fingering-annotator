@@ -1,6 +1,6 @@
 {
   "name": "note-fingering-annotator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://fheyen.github.io/note-fingering-annotator/",
   "private": false,
   "dependencies": {
