@@ -12,12 +12,29 @@ export default class App extends PureComponent {
         this.state = {
             fingers: []
         };
+        this.fingers = [
+            'right thumb',
+            'right index',
+            'right middle',
+            'right ring',
+            'right little',
+            'left thumb',
+            'left index',
+            'left middle',
+            'left ring',
+            'left little'
+        ];
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.notes !== this.props.notes) {
             this.setState({
                 fingers: new Array(this.props.notes.length).fill(null)
+            });
+        }
+        if (prevProps.fingers !== this.props.fingers) {
+            this.setState({
+                fingers: this.props.fingers
             });
         }
     }
@@ -50,6 +67,7 @@ export default class App extends PureComponent {
 
     render() {
         const { notes } = this.props;
+        const { fingers } = this.state;
         return (
             <div className='Annotator'>
                 <button
@@ -59,7 +77,11 @@ export default class App extends PureComponent {
                 </button>
                 <div className='notes'>
                     {notes.map((d, i) => (
-                        <div className='note'>
+                        <div
+                            key={d.toString()}
+                            title={d.toString()}
+                            className='note'
+                        >
                             <div>{Midi.getMidiNoteByNr(d.pitch).label} {d.pitch}</div>
                             {d.string !== undefined && d.fret !== undefined &&
                                 <div>String: {d.string} Fret: {d.fret}</div>
@@ -69,8 +91,16 @@ export default class App extends PureComponent {
                                 <input
                                     type='text'
                                     placeholder='Insert finger number...'
+                                    defaultValue={isNaN(+fingers[i]) ? null : fingers[i]}
                                     onChange={e => this.updateFinger(i, +e.target.value)}
                                 />
+                            </div>
+                            <div>
+                                {
+                                    isNaN(+fingers[i]) ?
+                                        <span className='missing'>missing</span>
+                                        : <span className='finger'>{this.fingers[fingers[i]]}</span>
+                                }
                             </div>
                         </div>
                     ))}

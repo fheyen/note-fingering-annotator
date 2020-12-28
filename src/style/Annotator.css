@@ -1,3 +1,7 @@
+.Annotator {
+    text-align: center;
+}
+
 .Annotator .note {
     margin: 10px;
     padding: 5px;
@@ -8,8 +12,16 @@
 
 .Annotator .note > div {
     margin-right: 10px;
+    min-width: 200px;
 }
 
 .Annotator .note:nth-child(odd) {
     background-color: #2a2a2a;
+}
+
+.Annotator .finger {
+    color: rgb(51, 164, 51)
+}
+.Annotator .missing {
+    color: rgb(181, 12, 12)
 }

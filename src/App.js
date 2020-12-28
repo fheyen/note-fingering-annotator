@@ -12,14 +12,11 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            viewSize: {
-                outerWidth: 800,
-                outerHeight: 600
-            },
             noteTracks: [],
             notes: [],
             selectedTrack: 0,
-            fileName: ''
+            fileName: '',
+            fingers: null
         };
     }
 
@@ -41,7 +38,8 @@ export default class App extends Component {
                     noteTracks: parts,
                     selectedTrack: 0,
                     notes: parts[0],
-                    fileName: source.files[0].name
+                    fileName: source.files[0].name,
+                    fingers: null
                 });
             } catch (e) {
                 alert('Invalid MIDI file or wrong format!');
@@ -60,10 +58,21 @@ export default class App extends Component {
                 noteTracks: parts,
                 selectedTrack: 0,
                 notes: parts[0],
-                fileName: e.target.files[0].name
+                fileName: e.target.files[0].name,
+                fingers: null
             });
         }
+        fr.readAsText(e.target.files[0]);
+    }
 
+    loadFingering = (e) => {
+        const fr = new FileReader();
+        fr.onload = () => {
+            const parsed = JSON.parse(fr.result);
+            this.setState({
+                fingers: parsed
+            });
+        }
         fr.readAsText(e.target.files[0]);
     }
 
@@ -96,7 +105,6 @@ export default class App extends Component {
                     <label>
                         Select MIDI file
                         <input
-                            className='fileInput'
                             type='file'
                             id='filereader'
                             accept='.mid,.midi'
@@ -105,30 +113,40 @@ export default class App extends Component {
                     <label>
                         Select MusicXML file
                         <input
-                            className='fileInput'
                             type='file'
                             accept='.xml,.musicxml'
                             onChange={this.loadMusicXml}
                         />
                     </label>
                     <label>
-                        Select a track
-                        <select
-                            onChange={this.handleSelectTrack}
-                            defaultValue={s.selectedTrack}
-                        >
-                            {s.noteTracks.map((d, i) => (
-                                <option key={i} value={i}>
-                                    Track {i} ({d.length} notes)
-                                </option>
-                            ))}
-                        </select>
+                        Select a fingering file
+                        <input
+                            type='file'
+                            accept='.json'
+                            onChange={this.loadFingering}
+                        />
                     </label>
+                    {s.noteTracks.length > 1 &&
+                        <label>
+                            Select a track
+                            <select
+                                onChange={this.handleSelectTrack}
+                                defaultValue={s.selectedTrack}
+                            >
+                                {s.noteTracks.map((d, i) => (
+                                    <option key={i} value={i}>
+                                        Track {i} ({d.length} notes)
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    }
                 </div>
                 <div>
                     <Annotator
                         notes={s.notes}
                         fileName={s.fileName}
+                        fingers={s.fingers}
                     />
                 </div>
                 <div className='githubLink'>
