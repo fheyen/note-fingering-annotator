@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/note-fingering-annotator/static/css/main.ba52daf4.chunk.css",
-    "main.js": "/note-fingering-annotator/static/js/main.5bad47d4.chunk.js",
-    "main.js.map": "/note-fingering-annotator/static/js/main.5bad47d4.chunk.js.map",
+    "main.css": "/note-fingering-annotator/static/css/main.64adf882.chunk.css",
+    "main.js": "/note-fingering-annotator/static/js/main.a73eae0a.chunk.js",
+    "main.js.map": "/note-fingering-annotator/static/js/main.a73eae0a.chunk.js.map",
     "runtime-main.js": "/note-fingering-annotator/static/js/runtime-main.569f0646.js",
     "runtime-main.js.map": "/note-fingering-annotator/static/js/runtime-main.569f0646.js.map",
     "static/js/2.4f241376.chunk.js": "/note-fingering-annotator/static/js/2.4f241376.chunk.js",
     "static/js/2.4f241376.chunk.js.map": "/note-fingering-annotator/static/js/2.4f241376.chunk.js.map",
     "index.html": "/note-fingering-annotator/index.html",
-    "static/css/main.ba52daf4.chunk.css.map": "/note-fingering-annotator/static/css/main.ba52daf4.chunk.css.map",
+    "static/css/main.64adf882.chunk.css.map": "/note-fingering-annotator/static/css/main.64adf882.chunk.css.map",
     "static/js/2.4f241376.chunk.js.LICENSE.txt": "/note-fingering-annotator/static/js/2.4f241376.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.569f0646.js",
     "static/js/2.4f241376.chunk.js",
-    "static/css/main.ba52daf4.chunk.css",
-    "static/js/main.5bad47d4.chunk.js"
+    "static/css/main.64adf882.chunk.css",
+    "static/js/main.a73eae0a.chunk.js"
   ]
 }
