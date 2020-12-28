@@ -1,0 +1,15 @@
+.Annotator .note {
+    margin: 10px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    border-radius: 10px;
+}
+
+.Annotator .note > div {
+    margin-right: 10px;
+}
+
+.Annotator .note:nth-child(odd) {
+    background-color: #2a2a2a;
+}
